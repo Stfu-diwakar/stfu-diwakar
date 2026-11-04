@@ -1,11 +1,14 @@
+name: Generate Profile Cards & Snake
+
+on:
   schedule:
     - cron: "0 0 * * *"
   workflow_dispatch:
   push:
     branches:
       - main
+
 jobs:
-  # ── Job 1: Profile Summary Cards (replaces github-readme-stats) ──
   summary-cards:
     runs-on: ubuntu-latest
     steps:
@@ -23,7 +26,7 @@ jobs:
           git add profile-summary-card-output/ -f
           git diff --staged --quiet || git commit -m "Generated profile summary cards"
           git push
-  # ── Job 2: Snake Animation ──
+
   snake:
     runs-on: ubuntu-latest
     steps:
